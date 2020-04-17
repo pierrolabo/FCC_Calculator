@@ -7,7 +7,36 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: black;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+  min-height: 40vh;
+}
+.case {
+  display: flex;
+}
+.display {
+  width: 100%;
+  border: 1px solid purple;
+  color: #fff;
+}
+
+.numpads-container {
+  justify-content: flex-end;
+}
+.numpads-row button {
+  padding: 28px;
+  border: 1px solid green;
+  border-radius: 4px;
+  margin: 2px;
+  background: green;
 }
