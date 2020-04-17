@@ -1,7 +1,23 @@
 const initState = {
   display: '0',
   lastEntered: '',
-  pastCalculation: [],
+  pastCalculation: [
+    '3',
+    '2',
+    '+',
+    '6',
+    '5',
+    '*',
+    '7',
+    '8',
+    '/',
+    '9',
+    '5',
+    '-',
+    '2',
+    '1',
+    '+',
+  ],
 };
 const nbr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 const operator = ['-', '+', '*', '/'];
@@ -107,6 +123,7 @@ const rootReducer = (state = initState, action) => {
   if (action.type === 'DISPLAY_EQUAL') {
     console.log('An equal has been pressed');
     console.log('EQUAL: ', state.pastCalculation);
+    calculation(state.pastCalculation);
   }
   //A reset has been pressed
   if (action.type === 'CLEAR_ACTION') {
@@ -119,20 +136,59 @@ const rootReducer = (state = initState, action) => {
   }
   return state;
 };
+
 //Return true if the display is already dec
 const isDec = (str) => str.indexOf('.') >= 0;
 
 const calculation = (arr) => {
   //list of minus number
   //list of operator
-}
-const getMinusNumber(arr) => {
+  let a = cleanOperation(arr);
+  console.log(a);
+};
+const cleanOperation = (arr) => {
   let nbr = [];
-  return [...arr].reduce( (acc, val, i) => {
-    if(val === '-')
+  return [...arr].reduce((acc, val, i) => {
+    console.log('processing: ', val, 'acc', acc);
+    let length = arr.length;
+    //we start with a minus nbr
+    if (val === '-' && i === '0') {
+      nbr.push(val);
+      return acc;
+    }
+    //if its a number we continu
+    if (!isNaN(val)) {
+      nbr.push(val);
+      return acc;
+    }
+    //if its an operator we push nbr into acc
+    if (isNaN(val) && val !== '-') {
+      console.log('pass:');
+      acc.push(nbr.join(''));
+      acc.push(val);
+      nbr = [];
+      return acc;
+    }
+    if (val === '-' && isNaN(arr[i - 1])) {
+      acc.push(nbr.join(''));
+      nbr = [];
+      nbr.push(val);
+      return acc;
+    }
+    if (val === '-' && isNaN(arr[i - 1])) {
+      acc.push(nbr.join(''));
+      nbr = [];
+      nbr.push(val);
+      return acc;
+    }
+    if (val === '-' && !isNaN(arr[i - 1])) {
+      acc.push(nbr.join(''));
+      nbr = [];
+      acc.push(val);
+      return acc;
+    }
+    return acc;
     //s'il est précédé de rien ou d'un operateur c'est un nbr negatif
-  }, [])
-const getOperations = (arr) => {
-
-}
+  }, []);
+};
 export default rootReducer;
