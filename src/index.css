@@ -1,10 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Manrope&display=swap');
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Manrope';
 }
 
 .App {
@@ -12,31 +9,66 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: black;
+  background: #b2ebf2;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
-  min-height: 40vh;
+  border: 4px solid #006064;
+  background: #006064;
+  border-radius: 8px;
+  min-height: 30vh;
+  padding: 12px;
 }
 .case {
   display: flex;
 }
 .display {
   width: 100%;
-  border: 1px solid purple;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #4fb3bf;
+  background: #4fb3bf;
   color: #fff;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.display h3 {
+  text-align: right;
+  margin-right: 12px;
 }
 
 .numpads-container {
+  display: flex;
+  flex-direction: column;
   justify-content: flex-end;
+  border: 1px solid #428e92;
+  background: #428e92;
+  border-radius: 12px;
 }
+.numpads-row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
 .numpads-row button {
-  padding: 28px;
-  border: 1px solid green;
-  border-radius: 4px;
-  margin: 2px;
-  background: green;
+  flex-wrap: wrap;
+  padding: 24px;
+  background: #428e92;
+  border: none;
+  color: white;
+  border-radius: 50px;
+}
+
+.numpads-row button:hover {
+  cursor: pointer;
+  background-color: #8bf6ff;
+  border-radius: 50px;
+}
+
+#equals {
+  width: 78%;
 }

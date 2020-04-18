@@ -1,9 +1,8 @@
 const initState = {
   display: '0',
   lastEntered: '',
-  pastCalculation: ['1', '0', '.', '5', '-', '5', '.', '5'],
+  pastCalculation: [],
 };
-const nbr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 const operator = ['-', '+', '*', '/'];
 const rootReducer = (state = initState, action) => {
   //A number has been pressed
@@ -104,7 +103,6 @@ const rootReducer = (state = initState, action) => {
   }
   //A reset has been pressed
   if (action.type === 'CLEAR_ACTION') {
-    console.log('A reset been pressed');
     return {
       display: '0',
       lastEntered: '',
@@ -118,9 +116,8 @@ const rootReducer = (state = initState, action) => {
 const isDec = (str) => str.indexOf('.') >= 0;
 
 const doCalculation = (arr) => {
-  console.log('string', arr.join(''));
-  const regexNbr = /(\d+\.\d+)|([*\/]-\d+)|(\d+)/g;
-  const regexOpr = /([+\*\/-]{2})|([+\*\/-])/g;
+  const regexNbr = /(\d+\.\d+)|([*/]-\d+)|(\d+)/g;
+  const regexOpr = /([+*/-]{2})|([+*/-])/g;
 
   const nbr = arr
     .join('')
@@ -131,7 +128,6 @@ const doCalculation = (arr) => {
           return number !== '/' && number !== '*';
         })
         .join('');
-      console.log(val, '|', fullNumber);
       if (fullNumber.indexOf('.') >= 0) {
         return parseFloat(fullNumber);
       }
@@ -163,9 +159,8 @@ const doCalculation = (arr) => {
       default:
         break;
     }
+    return acc;
   });
-  console.log('nbr', nbr);
-  console.log('opr', opr);
   return calculation;
 };
 export default rootReducer;

@@ -5,7 +5,7 @@ class Display extends Component {
   render() {
     return (
       <div className='display'>
-        <h3 className='display'>{this.props.pastCalculation}</h3>
+        <h3>{this.props.pastCalculation}</h3>
         <h3 id='display'>{this.props.display}</h3>
       </div>
     );

@@ -12,7 +12,6 @@ const operator = ['+', '*', '/'];
 class NumPad extends Component {
   handleClick = (e) => {
     e.preventDefault();
-    console.log('button clicked');
     if (this.props.id === 'clear') {
       this.props.clearAction();
     } else if (nbr.indexOf(this.props.val) >= 0) {
@@ -30,7 +29,7 @@ class NumPad extends Component {
 
   render() {
     return (
-      <button className='d' id={this.props.id} onClick={this.handleClick}>
+      <button id={this.props.id} onClick={this.handleClick}>
         {this.props.val}
       </button>
     );
